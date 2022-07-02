@@ -107,6 +107,7 @@ int main()
 {
 	char ch;
 	int num;
+	bool continue_loop=true;
 	do
 	{
 	system("clear");
@@ -167,7 +168,19 @@ int main()
 		}
 		cin.ignore();
 		cin.get();
-    }while(ch!='8');
+
+		char option;
+		cout<<"Do you want to continue (y/n)? ";
+		cin>>option;
+		cout<<"\n";
+
+		if(option=='y' || option=='Y') {
+			continue_loop=true;
+		}
+		else {
+			continue_loop=false;
+		}
+    }while(continue_loop);
 	return 0;
 }
 
@@ -272,7 +285,7 @@ void delete_account(int n)
 
 void display_all()
 {
-	system("CLS");
+	system("clear");
 	account ac;
 	ifstream inFile;
 	inFile.open("account.dat",ios::binary);
@@ -340,4 +353,3 @@ void deposit_withdraw(int n, int option)
 	if(found==false)
 		cout<<"\n\n\t\t\tRecord Not Found ";
 }
-
